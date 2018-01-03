@@ -1,270 +1,154 @@
-SQL Server 10.0 ±àÂë¹æ·¶Ö¸Òý
-1. Ö¸ÒýÖÆ¶¨Ô­Ôò
-1£®·½±ã´úÂëµÄ½»Á÷ºÍÎ¬»¤¡£
-2£®²»Ó°Ïì±àÂëµÄÐ§ÂÊ£¬²»Óë´óÖÚÏ°¹ß³åÍ»¡£
-3£®Ê¹´úÂë¸üÃÀ¹Û¡¢ÔÄ¶Á¸ü·½±ã¡£
-4£®Ê¹´úÂëµÄÂß¼­¸üÇåÎú¡¢¸üÒ×ÓÚÀí½â¡£
-2. Âß¼­¶ÔÏóµÄÃüÃû¹æ·¶
-ÓÃÓÚ¹æ·¶Êý¾Ý¿â¶ÔÏóµÄÃüÃû£¬ÒÔ±ãÓÚÇø·Ö²»Í¬ÀàÐÍµÄÊý¾Ý¿â¶ÔÏó¡£ÃüÃû¿É²ÉÓÃÓ¢ÎÄ»òÊ¹ÓÃºº×Ö¼òÆ´¡£²ÉÓÃÓ¢ÎÄÃüÃûÊ±Ê××ÖÄ¸´óÐ´£¬²ÉÓÃºº×Ö¼òÆ´Ê±ËùÓÐ×ÖÄ¸´óÐ´¡£
-Êý¾Ý¶ÔÏóÀà±ð±êÊ¶:
- 
-Êý¾Ý¶ÔÏóÀà±ð	Ç°×º	   
-±í	tb_	   
-ÊÓÍ¼	view_	   
-´¥·¢Æ÷	trig_	   
-´æ´¢¹ý³Ì	proc_	   
-º¯Êý	func_	   
-Ë÷Òý	IX_	   
-Ö÷¼ü	PK_	   
-Íâ¼ü	FK_	 
-2.1 Êý¾Ý¿âÃüÃû
-Êý¾Ý¿âµÄÃüÃûÒªÇóÊ¹ÓÃÓëÊý¾Ý¿âÒâÒåÏà¹ØÁªµÄÓ¢ÎÄ»òÕßÆ´Òô´óÐ´Ê××ÖÄ¸¡£ÀýÈç£º
-Ð­Í¬°ì¹«ÏîÄ¿ Elane.OA¡¢Elane.Platform
-×Ê²ú¹ÜÀíÊý¾Ý¿âµÄÃüÃûÎªZCGL¡£
-2.2 Êý¾Ý¿âÎÄ¼þ¼°Ä¿Â¼
-Êý¾Ý¿âÖ÷Êý¾ÝÎÄ¼þÃüÃû£ºDatabaseName.mdf£¬ÎÄ¼þ×éÃû³Æ£ºPRIMARY
-Êý¾Ý¿âÊÂÎñÈÕÖ¾ÎÄ¼þÃüÃû£ºDatabaseName_log.ldf
-Êý¾Ý¿âÎÄ¼þ×éÃüÃû£ºÖ÷ÎÄ¼þ×éPRIMARY£¬´ÎÎÄ¼þ×éDatabaseName_FileGroup
-ÆäÖÐ£ºDatabaseNameÎªÊý¾Ý¿âÊµ¼ÊÃû³Æ
-2.3 Êý¾Ý±íÃüÃû
- 
-tb	_	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	 
-ÃüÃû¹æÔò£ºtb(Êý¾Ý¶ÔÏóÀà±ð±êÊ¶) £«Êý¾ÝÃèÊö £« ±íÀàÐÍ(·Ç±ØÒª)
-Ê¾Àý£ºtb_Account              ÕÊºÅÐÅÏ¢±í
-         tb_Role	          	    ½ÇÉ«ÐÅÏ¢±í
+# MySQL ç¼–ç è§„èŒƒæŒ‡å¼•
 
-2.4 ´æ´¢¹ý³ÌÃüÃû
- 
-proc	_	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	_	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	 
-ÃüÃû¹æÔò£ºproc(Êý¾Ý¶ÔÏóÀà±ð±êÊ¶) £«Êý¾ÝÃèÊö(·Ç±ØÒª) + ´¦ÀíÃèÊö 
-Ê¾Àý£ºproc_News_GetPages     »ñÈ¡ÐÂÎÅ·ÖÒ³ÁÐ±íµÄ´æ´¢¹ý³Ì
+## 1. æŒ‡å¼•åˆ¶å®šåŽŸåˆ™
 
-2.5 ÊÓÍ¼ÃüÃû
- 
-view	_	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	 
-ÃüÃû¹æÔò£ºview(Êý¾Ý¶ÔÏóÀà±ð±êÊ¶) £«Êý¾ÝÃèÊö 
-Ê¾Àý£ºview_Task  ÈÎÎñÐÅÏ¢ÊÓÍ¼
+* 1ï¼Žæ–¹ä¾¿ä»£ç çš„äº¤æµå’Œç»´æŠ¤ã€‚
+* 2ï¼Žä¸å½±å“ç¼–ç çš„æ•ˆçŽ‡ï¼Œä¸ä¸Žå¤§ä¼—ä¹ æƒ¯å†²çªã€‚
+* 3ï¼Žä½¿ä»£ç æ›´ç¾Žè§‚ã€é˜…è¯»æ›´æ–¹ä¾¿ã€‚
+* 4ï¼Žä½¿ä»£ç çš„é€»è¾‘æ›´æ¸…æ™°ã€æ›´æ˜“äºŽç†è§£ã€‚
 
-2.6 º¯ÊýÃüÃû
- 
-func	_	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	_	¡Á	¡Á	¡Á	¡Á	 
-ÃüÃû¹æÔò£ºF(Êý¾Ý¶ÔÏóÀà±ð±êÊ¶) £«Êý¾ÝÃèÊö(·Ç±ØÒª)£«´¦ÀíÃèÊö 
-Ê¾Àý£ºfunc_GetOrganizationPathNameByOrganizationId  »ñÈ¡µ¥Î»È«³ÆµÄº¯Êý
-         func_GetTimestamp  »ñÈ¡Ê±¼ä´ÁµÄº¯Êý
-2.7 Ë÷ÒýÃüÃû
- 
-IX	_	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	 
-ÃüÃû¹æÔò£ºIX(Êý¾Ý¶ÔÏóÀà±ð±êÊ¶) £« ±íÃû £« ×Ö¶ÎÃû(·Ç±ØÒª)
-Ê¾Àý£ºIX_td_Account  ÓÃ»§ÐÅÏ¢±íÒÔIdÎªË÷Òý
+## 2. é€»è¾‘å¯¹è±¡çš„å‘½åè§„èŒƒ
 
-2.8 ´¥·¢Æ÷ÃüÃû
+ç”¨äºŽè§„èŒƒæ•°æ®åº“å¯¹è±¡çš„å‘½åï¼Œä»¥ä¾¿äºŽåŒºåˆ†ä¸åŒç±»åž‹çš„æ•°æ®åº“å¯¹è±¡ã€‚å‘½åå¯é‡‡ç”¨è‹±æ–‡æˆ–ä½¿ç”¨æ±‰å­—ç®€æ‹¼ã€‚é‡‡ç”¨è‹±æ–‡å‘½åæ—¶é¦–å­—æ¯å¤§å†™ï¼Œé‡‡ç”¨æ±‰å­—ç®€æ‹¼æ—¶æ‰€æœ‰å­—æ¯å¤§å†™ã€‚
+æ•°æ®å¯¹è±¡ç±»åˆ«æ ‡è¯†:
+
+| æ•°æ®å¯¹è±¡ç±»åˆ« | å‰ç¼€	  |  
+| ---          | ---    |  
+| è¡¨           | tb_    |  
+| è§†å›¾         | view_  |  
+| è§¦å‘å™¨       | trig_  |  
+| å­˜å‚¨è¿‡ç¨‹     | proc_  |  
+| å‡½æ•°         | func_  |  
+| ç´¢å¼•         | ix_    |  
+| ä¸»é”®         | pk_	  |  
+| å¤–é”®         | fk_	  |  
+		 
+### 2.1 æ•°æ®åº“å‘½å
+æ•°æ®åº“çš„å‘½åè¦æ±‚ä½¿ç”¨ä¸Žæ•°æ®åº“æ„ä¹‰ç›¸å…³è”çš„è‹±æ–‡æˆ–è€…æ‹¼éŸ³å¤§å†™é¦–å­—æ¯ã€‚ä¾‹å¦‚ï¼š
+
+ååŒåŠžå…¬é¡¹ç›® `x3_oa` æˆ–è€… `x3_platform`
+èµ„äº§ç®¡ç†æ•°æ®åº“çš„å‘½åä¸º`ZCGL`ã€‚
+
+### 2.2 æ•°æ®è¡¨å‘½å
+
+| tb   | _   | Ã—	| Ã—  | Ã—  | Ã—  | Ã—  | Ã—  | Ã—  | Ã—  | Ã—  | Ã— |  
+| ---  | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |--- |
+
+å‘½åè§„åˆ™ï¼štb(æ•°æ®å¯¹è±¡ç±»åˆ«æ ‡è¯†) ï¼‹æ•°æ®æè¿° ï¼‹ è¡¨ç±»åž‹(éžå¿…è¦) _
+ç¤ºä¾‹ï¼štb_account              å¸å·ä¿¡æ¯è¡¨
+      tb_role	          	    è§’è‰²ä¿¡æ¯è¡¨
+      tb_account_role	        å¸å·å’Œè§’è‰²ä¿¡æ¯å…³ç³»è¡¨
+
+### 2.3 è§†å›¾å‘½å
  
-trig	_	¡Á	¡Á	¡Á	_	¡Á	¡Á	¡Á	_	¡Á	¡Á	¡Á	 
-ÃüÃû¹æÔò£ºTR(Êý¾Ý¶ÔÏóÀà±ð±êÊ¶) £« ±íÃû£«´¥·¢Ìõ¼þÀà±ð(I:Insert,U:Update,D:Delete) £« ´¥·¢Ë³ÐòÀà±ð(A:After,B:Befor)  
-Ê¾Àý£ºtrig_tb_Account_Update_After ÔÚÕË»§ÐÅÏ¢±íµÄUpdate´¥·¢Æ÷(ÔÚUpdateÖ®Ç°´¥·¢)
+| view | _   | Ã—	| Ã—  | Ã—  | Ã—  | Ã—  | Ã—  | Ã—  | Ã—  | Ã—  | Ã— |  
+| ---  | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |--- |
 
-2.9 Ö÷¼üÃüÃû
-µ¥Ö÷¼ü
+å‘½åè§„åˆ™ï¼šview(æ•°æ®å¯¹è±¡ç±»åˆ«æ ‡è¯†) ï¼‹æ•°æ®æè¿° 
+ç¤ºä¾‹ï¼šview_task  ä»»åŠ¡ä¿¡æ¯è§†å›¾
+
+### 2.4 å‡½æ•°å‘½å
  
-PK	_	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	 
-ÃüÃû¹æÔò£ºPK(Êý¾Ý¶ÔÏóÀà±ð±êÊ¶) £«±íÃû£« ×Ö¶ÎÃû(·Ç±ØÒª)
-Ê¾Àý£ºPK_tb_Account  ÕË»§ÐÅÏ¢±íµÄÖ÷¼ü
-
-2.10 Íâ¼üÃüÃû
+| func | _   | Ã—	| Ã—  | Ã—  | Ã—  | Ã—  | Ã—  | Ã—  | Ã—  | Ã—  | Ã— |  
+| ---  | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |--- |
+	 
+å‘½åè§„åˆ™ï¼šF(æ•°æ®å¯¹è±¡ç±»åˆ«æ ‡è¯†) ï¼‹æ•°æ®æè¿°(éžå¿…è¦)ï¼‹å¤„ç†æè¿° 
+ç¤ºä¾‹ï¼šfunc_GetOrganizationPathNameByOrganizationId  èŽ·å–å•ä½å…¨ç§°çš„å‡½æ•°
+         func_GetTimestamp  èŽ·å–æ—¶é—´æˆ³çš„å‡½æ•°
+### 2.5 ç´¢å¼•å‘½å
  
-FK	_	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	¡Á	 
-ÃüÃû¹æÔò£ºFK(Êý¾Ý¶ÔÏóÀà±ð±êÊ¶) £« Íâ¼ü±íÃû £« ×Ö¶ÎÃû(·Ç±ØÒª) £« Ö÷¼ü±íÃû £« ×Ö¶ÎÃû(·Ç±ØÒª)
-Ê¾Àý£ºFK_tb_Account_Role_AccountId_tb_Account_Id  ÓÃ»§ÐÅÏ¢±íµÄÍâ¼ü
-     »òÕßFK_tb_Account_Role_tb_Account
+| ix   | _   | Ã—	| Ã—  | Ã—  | Ã—  | Ã—  | Ã—  | Ã—  | Ã—  | Ã—  | Ã— |  
+| ---  | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |--- |
+	 
+å‘½åè§„åˆ™ï¼šix(æ•°æ®å¯¹è±¡ç±»åˆ«æ ‡è¯†) ï¼‹ è¡¨å ï¼‹ å­—æ®µå(éžå¿…è¦)
+ç¤ºä¾‹ï¼šix_td_account  ç”¨æˆ·ä¿¡æ¯è¡¨ä»¥Idä¸ºç´¢å¼•
 
-3.¿É±à³ÌÐÔ±àÂë¹æ·¶
-3.1 ¿É±à³ÌÐÔÍ³Ò»¹æ·¶
-3.1.1 ´úÂë±àÐ´¸ñÊ½¹æ·¶
-1£©Ò»°ãÉèÖÃTAB = 4£¬ ²¢½«TAB×Ô¶¯×ª»»Îª¿Õ¸ñ£»
-2£©Ã¿ÐÐ×î´óÏÞ¶ÈÎª80¸ö×Ö·û£»
-3£©µ¥ÐÐ×¢ÊÍ²ÉÓÃ--£¬¶àÐÐ×¢ÊÍ²ÉÓÃ/* ×¢ÊÍÄÚÈÝ */ µÄÐÎÊ½£»
-4£©¶à¸öBegin¡­EndÓï¾äÇ¶Ì×Ê±²ÉÓÃÈçÏÂ·½Ê½¡£
-        BEGIN /*1*/
-            ¡­
-            BEGIN /*1.1*/
-                ¡­
-                BEGIN /*1.1.1*/
-                    ¡­
-                END /*1.1.1*/
+### 2.6 ä¸»é”®å‘½å
+å•ä¸»é”®
+ 
+| pk   | _   | Ã—	| Ã—  | Ã—  | Ã—  | Ã—  | Ã—  | Ã—  | Ã—  | Ã—  | Ã— |  
+| ---  | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |--- |
+	 
+å‘½åè§„åˆ™ï¼šPK(æ•°æ®å¯¹è±¡ç±»åˆ«æ ‡è¯†) ï¼‹è¡¨åï¼‹ å­—æ®µå(éžå¿…è¦)
+ç¤ºä¾‹ï¼šPK_tb_Account  è´¦æˆ·ä¿¡æ¯è¡¨çš„ä¸»é”®
 
-                BEGIN /*1.1.2*/
-                    ¡­
-                END /*1.1.2*/
-            END /*1.1*/
-        END /*1*/
-        ÆäÖÐ1±íÊ¾µÚÒ»¼¶Ç¶Ì×£¬1.1±íÊ¾µÚ¶þ¼¶Ç¶Ì×£¬1.1.1±íÊ¾µÚÈý¼¶Ç¶Ì×£¬1.1.2±íÊ¾µÚÈý¼¶µÄµÚ¶þ¸öÇ¶Ì×¡­£¬
-        Ò»°ã²»Òª³¬¹ýÈý¼¶Ç¶Ì×¡£
-3.2 ´æ´¢¹ý³Ì
-3.2.1 ´æ´¢¹ý³Ì¸ñÊ½
-USE <database_name>
-GO
-IF exist ()
-DROP PROCEDURE <usename>.<procedure_name>
-GO
-SET
-SET
-CREATE PROCEDURE <usename>.<procedure_name>
-[[(]@parameter_name datatype [OUTPUT]
-[,@parameter_name datatype [OUTPUT]]..[]]
-AS
-BEGIN
-    SQL_statements
-END
-GO
-SET
-SET
-3.2.2 ´æ´¢¹ý³Ì±êÍ·±¸×¢
-¹ý³ÌÇ°Ó¦ÓÐÎÄ×ÖËµÃ÷£¬ËµÃ÷±¾¹ý³ÌÊÇ×öÊ²Ã´µÄ¡¢µ÷ÓÃÕßÊÇË­¡¢·µ»ØÖµµÄº¬Òå¡¢²ÎÊýµÄº¬Òå¡¢ÊäÈëÊý¾Ý¿â¡¢Êä³öÊý¾Ý¿â£¬Ã¿Ò»²½²Ù×÷Ç°ÓÐÎÄ×ÖËµÃ÷£¬ËµÃ÷¸Ã²Ù×÷´ïµ½µÄÄ¿µÄ¡£
-¸ñÊ½Îª£º
-/******************************************************************
-¸ÅÒªËµÃ÷£º
-      ÖÐÎÄÃû³Æ£º
-      ÓÃ         Í¾£º
-      Êý   ¾Ý  ¿â£º
-Óï·¨ÐÅÏ¢£º
-      ÊäÈë²ÎÊý£º
-      Êä³ö²ÎÊý£º
-      µ÷ÓÃ¾ÙÀý£º
-Íâ²¿ÁªÏµ£º
-      ÉÏ¼¶µ÷ÓÃ£º
-      ÏÂ¼¶µ÷ÓÃ£º
-      Êä         Èë£º
-      Êä         ³ö£º
-¹¦ÄÜÐÞ¶©£º
-      ¼òÒªËµÃ÷£º
-      ÐÞ¶©¼ÇÂ¼£º
-            <ÐÞ¶©ÈÕÆÚ> <ÐÞ¶©ÈË>£ºÐÞ¸ÄÄÚÈÝ¼òÒªËµÃ÷
-                  <Ðø¼òÒªËµÃ÷>
-            <ÐÞ¶©ÈÕÆÚ> <ÐÞ¶©ÈË>£ºÐÞ¸ÄÄÚÈÝ¼òÒªËµÃ÷
-                  <Ðø¼òÒªËµÃ÷>
-******************************************************************/
-3.2.3 ·µ»ØÖµ
-1£©Ê¹ÓÃÊä³ö²ÎÊý·µ»Ø¹ý³ÌÖ´ÐÐµÄÏà¹ØÐÅÏ¢¡£
-2£©¹ý³Ì½áÊøÇ°Ó¦µ÷ÓÃreturn·µ»Ø´úÂë£¬×÷Îª´æ´¢¹ý³ÌµÄÖ´ÐÐ×´Ì¬¡£
-3.3 º¯Êý
-3.3.1 º¯Êý¸ñÊ½
+### 2.10 å¤–é”®å‘½å
+ 
+| fk   | _   | Ã—	| Ã—  | Ã—  | Ã—  | Ã—  | Ã—  | Ã—  | Ã—  | Ã—  | Ã— |  
+| ---  | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |--- |
+
+**å‘½åè§„åˆ™: FK(æ•°æ®å¯¹è±¡ç±»åˆ«æ ‡è¯†) ï¼‹ å¤–é”®è¡¨å ï¼‹ å­—æ®µå(éžå¿…è¦) ï¼‹ ä¸»é”®è¡¨å ï¼‹ å­—æ®µå(éžå¿…è¦)**
+
+ç¤ºä¾‹ï¼š
+fk_tb_account_role_accountId_tb_Account_Id  ç”¨æˆ·ä¿¡æ¯è¡¨çš„å¤–é”®
+     æˆ–è€… fk_tb_Account_Role_tb_Account
+
+## 3.å¯ç¼–ç¨‹æ€§ç¼–ç è§„èŒƒ
+
+### 3.1 å¯ç¼–ç¨‹æ€§ç»Ÿä¸€è§„èŒƒ
+
+#### 3.1.1 ä»£ç ç¼–å†™æ ¼å¼è§„èŒƒ
+* 1ï¼‰ä¸€èˆ¬è®¾ç½®TAB = 4ï¼Œ å¹¶å°†TABè‡ªåŠ¨è½¬æ¢ä¸ºç©ºæ ¼ï¼›
+* 2ï¼‰æ¯è¡Œæœ€å¤§é™åº¦ä¸º80ä¸ªå­—ç¬¦ï¼›
+* 3ï¼‰å•è¡Œæ³¨é‡Šé‡‡ç”¨--ï¼Œå¤šè¡Œæ³¨é‡Šé‡‡ç”¨/* æ³¨é‡Šå†…å®¹ */ çš„å½¢å¼ï¼›
+* 4ï¼‰å¤šä¸ªBeginâ€¦Endè¯­å¥åµŒå¥—æ—¶é‡‡ç”¨å¦‚ä¸‹æ–¹å¼ã€‚
+``` SQL
+BEGIN /*1*/
+    â€¦
+    BEGIN /*1.1*/
+        â€¦
+        BEGIN /*1.1.1*/
+            â€¦
+        END /*1.1.1*/
+
+        BEGIN /*1.1.2*/
+            â€¦
+        END /*1.1.2*/
+    END /*1.1*/
+END /*1*/
+```
+å…¶ä¸­1è¡¨ç¤ºç¬¬ä¸€çº§åµŒå¥—ï¼Œ1.1è¡¨ç¤ºç¬¬äºŒçº§åµŒå¥—ï¼Œ1.1.1è¡¨ç¤ºç¬¬ä¸‰çº§åµŒå¥—ï¼Œ1.1.2è¡¨ç¤ºç¬¬ä¸‰çº§çš„ç¬¬äºŒä¸ªåµŒå¥— â€¦ï¼Œä¸€èˆ¬ä¸è¦è¶…è¿‡ä¸‰çº§åµŒå¥—ã€‚
+
+### 3.3 å‡½æ•°
+#### 3.3.1 å‡½æ•°æ ¼å¼
+```SQL
 use <database_name>
 go
-if exist ¡­
-drop FUNCTION <usename>.<function_name>
+if exist â€¦
+drop FUNCTION <function_name>
 go
-create function dbo.Function_Name()
-	returns <function_data_type, ,int>
+create function function_name()
+	returns <function_data_type, int>
 as
 begin
-    <function_body, , RETURN >
-END
-3.3.2 º¯Êý±êÍ·±¸×¢
-º¯ÊýÇ°Ó¦ÓÐÎÄ×ÖËµÃ÷£¬ËµÃ÷±¾º¯ÊýÊÇ×öÊ²Ã´µÄ¡¢µ÷ÓÃÕßÊÇË­¡¢·µ»ØÖµµÄº¬Òå¡¢²ÎÊýµÄº¬Òå¡¢ÊäÈëÊý¾Ý¿â¡¢Êä³öÊý¾Ý¿â£¬Ã¿Ò»²½²Ù×÷Ç°ÓÐÎÄ×ÖËµÃ÷£¬ËµÃ÷¸Ã²Ù×÷´ïµ½µÄÄ¿µÄ¡£
-¸ñÊ½Îª:
+    <function_body, RETURN >
+end
+```
+
+#### 3.3.2 å‡½æ•°æ ‡å¤´å¤‡æ³¨
+å‡½æ•°å‰åº”æœ‰æ–‡å­—è¯´æ˜Žï¼Œè¯´æ˜Žæœ¬å‡½æ•°æ˜¯åšä»€ä¹ˆçš„ã€è°ƒç”¨è€…æ˜¯è°ã€è¿”å›žå€¼çš„å«ä¹‰ã€å‚æ•°çš„å«ä¹‰ã€è¾“å…¥æ•°æ®åº“ã€è¾“å‡ºæ•°æ®åº“ï¼Œæ¯ä¸€æ­¥æ“ä½œå‰æœ‰æ–‡å­—è¯´æ˜Žï¼Œè¯´æ˜Žè¯¥æ“ä½œè¾¾åˆ°çš„ç›®çš„ã€‚
+æ ¼å¼ä¸º:
+```SQL
 /******************************************************************
-¸ÅÒªËµÃ÷£º
-      ÖÐÎÄÃû³Æ£º
-      ÓÃ         Í¾£º
-      Êý   ¾Ý  ¿â£º
-Óï·¨ÐÅÏ¢£º
-      ÊäÈë²ÎÊý£º
-      Êä³ö²ÎÊý£º
-      µ÷ÓÃ¾ÙÀý£º
-Íâ²¿ÁªÏµ£º
-      ÉÏ¼¶µ÷ÓÃ£º
-      ÏÂ¼¶µ÷ÓÃ£º
-      Êä         Èë£º
-      Êä         ³ö£º
-¹¦ÄÜÐÞ¶©£º
-      ¼òÒªËµÃ÷£º
-      ÐÞ¶©¼ÇÂ¼£º
-            <ÐÞ¶©ÈÕÆÚ> <ÐÞ¶©ÈË>£ºÐÞ¸ÄÄÚÈÝ¼òÒªËµÃ÷
-                  <Ðø¼òÒªËµÃ÷>
-            <ÐÞ¶©ÈÕÆÚ> <ÐÞ¶©ÈË>£ºÐÞ¸ÄÄÚÈÝ¼òÒªËµÃ÷
-                  <Ðø¼òÒªËµÃ÷>
+æ¦‚è¦è¯´æ˜Žï¼š
+  ä¸­æ–‡åç§°ï¼š
+  ç”¨    é€”ï¼š
+  æ•° æ® åº“ï¼š
+è¯­æ³•ä¿¡æ¯ï¼š
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è°ƒç”¨ä¸¾ä¾‹ï¼š
+å¤–éƒ¨è”ç³»ï¼š
+  ä¸Šçº§è°ƒç”¨ï¼š
+  ä¸‹çº§è°ƒç”¨ï¼š
+  è¾“    å…¥ï¼š
+  è¾“    å‡ºï¼š
+åŠŸèƒ½ä¿®è®¢ï¼š
+  ç®€è¦è¯´æ˜Žï¼š
+  ä¿®è®¢è®°å½•ï¼š
+    <ä¿®è®¢æ—¥æœŸ> <ä¿®è®¢äºº>ï¼šä¿®æ”¹å†…å®¹ç®€è¦è¯´æ˜Ž
+      <ç»­ç®€è¦è¯´æ˜Ž>
+    <ä¿®è®¢æ—¥æœŸ> <ä¿®è®¢äºº>ï¼šä¿®æ”¹å†…å®¹ç®€è¦è¯´æ˜Ž
+      <ç»­ç®€è¦è¯´æ˜Ž>
 ******************************************************************/
-3.4 ´¥·¢Æ÷
-3.4.1 ´¥·¢Æ÷¸ñÊ½
-IF EXISTS (SELECT name FROM sysobjects
-WHERE name = N'<trigger_name, sysname, trig_test>'
-		AND type = 'TR')
-	DROP TRIGGER <trigger_name, sysname, trig_test>
-GO
-
-CREATE TRIGGER <trigger_name, sysname, trig_test>
-  ON <table_or_view_name, sysname, pubs.dbo.sales>
-INSTEAD OF INSERT
-AS
-BEGIN
-     RAISERROR (50009, 16, 10)
-END
-GO
-3.4.2 ´¥·¢Æ÷±êÍ·±¸×¢
-´¥·¢Æ÷Ç°Ó¦ÓÐÎÄ×ÖËµÃ÷£¬ËµÃ÷±¾´¥·¢Æ÷ÊÇ×öÊ²Ã´µÄ¡¢×÷ÓÃ±íÊÇÄÄÐ©¡¢´¥·¢Æ÷ÀàÐÍµÈ£¬Ã¿Ò»²½²Ù×÷Ç°Ó¦ÓÐÎÄ×ÖËµÃ÷£¬ËµÃ÷¸Ã²Ù×÷´ïµ½µÄÄ¿µÄ¡£
-¸ñÊ½Îª£º
-/******************************************************************
-¸ÅÒªËµÃ÷£º
-      ÖÐÎÄÃû³Æ£º
-      ÓÃ         Í¾£º
-      Êý   ¾Ý  ¿â£º
-      ´¥·¢Æ÷ÀàÐÍ£º
-Óï·¨ÐÅÏ¢£º
-      ÊäÈë²ÎÊý£º
-      Êä³ö²ÎÊý£º
-      µ÷ÓÃ¾ÙÀý£º
-Íâ²¿ÁªÏµ£º
-      ÉÏ¼¶µ÷ÓÃ£º
-      ÏÂ¼¶µ÷ÓÃ£º
-      Êä         Èë£º
-      Êä         ³ö£º
-¹¦ÄÜÐÞ¶©£º
-      ¼òÒªËµÃ÷£º
-      ÐÞ¶©¼ÇÂ¼£º
-            <ÐÞ¶©ÈÕÆÚ> <ÐÞ¶©ÈË>£ºÐÞ¸ÄÄÚÈÝ¼òÒªËµÃ÷
-                  <Ðø¼òÒªËµÃ÷>
-            <ÐÞ¶©ÈÕÆÚ> <ÐÞ¶©ÈË>£ºÐÞ¸ÄÄÚÈÝ¼òÒªËµÃ÷
-                  <Ðø¼òÒªËµÃ÷>
-******************************************************************/
-
-4.Êý¾Ý¿â±à³Ì¼¼ÇÉ
-4.1×Ó²éÑ¯ÓëÁª½á²éÑ¯Ö®±È½Ï
-×Ó²éÑ¯ÓëÁª½á²éÑ¯Ò»°ãÄÜ»¥ÏàÌæ»»£¬Ö»²»¹ý×Ó²éÑ¯µÄÐ§ÂÊ½ÏµÍ£¬µ«ÊÇ¿É¶ÁÐÔ±È½ÏºÃ£»¶øÁª½Ó²éÑ¯Ð§ÂÊ½Ï¸ß£¬¿É¶ÁÐÔ²î£¬µ«ÓÐÒ»ÖÖÇé¿ö²»ÄÜÊ¹ÓÃÁª½Ó²éÑ¯£¬¼´±È½ÏÖ®¼äÉæ¼°µ½¾ÛºÏº¯Êý£¬ÈçÊ¹ÓÃavg£¬sumµÈº¯ÊýÊ±£¬Ö»ÄÜÊ¹ÓÃ×Ó²éÑ¯¡£Àý£º
-_____________________________________________________________
-SELECT 
-    titles.title, titles.price
-FROM titles JOIN sales ON sales.title_id = titles.title_id
-WHERE sales.qty > (SELECT AVG(qty) FROM sales)
-_____________________________________________________________
-4.2´óÊý¾Ý±íÁª½á²éÑ¯¼¼ÇÉ
-´óÊý¾Ý±í¼äµÄÁª½á²éÑ¯Í¨¹ýÒ»¸öSQL²éÑ¯Íê³ÉµÄÐ§ÂÊ½ÏµÍ£¬ÇÒÁª½áÌõ¼þºÍ²éÑ¯Ìõ¼þ¶à¼ä¿É¶ÁÐÔ±È½Ï²î£»¿ÉÓÉÒ»¸ö»òÁ½¸ö´óÊý¾Ý±í°´×î´ó¹ýÂËÌõ¼þÉú³ÉÒ»¸öÁÙÊ±±í£¨#.....£©£¬È»ºóÓÉ´ËÁÙÊ±±íÁª½áÉú³É£¬Ê¾¾ßÌåÇé¿öÉõÖÁ¿ÉÒ»²ã²ãÍùÏÂ¹ýÂË--Áª½á--¹ýÂË¡ªÁª½á£¬×îÖÕÉú³ÉËùÐëµÄ½á¹û¼¯¡£
-4.3¾ÛÀàË÷ÒýºÍ·Ç¾ÛÀàË÷ÒýÖ®±È½Ï
-A) ·µ»Ø·¶Î§ÄÚµÄÊý¾Ý£¬·µ»ØÈçÐÕÃû·¶Î§»òÈÕÆÚ·¶Î§µÄ¶©»õÁ¿£¬Ò»°ãÊ¹ÓÃ¾ÛÀàË÷Òý¡£ÒòÎª¾ÛÀàË÷ÒýÒÑ¾­°üº¬ÁË¾­¹ý·ÖÀàÅÅÐòµÄÊý¾Ý£¬¾ÛÀàË÷ÒýÖ»ÐèÕÒµ½Òª¼ìË÷µÄËùÓÐÊý¾ÝÖÐµÄ¿ªÍ·ºÍ½áÎ²Êý¾Ý¡£
-B) ÁÐÖÐÓÐÒ»¸ö»ò¼«ÉÙµÄ²»Í¬Öµ£¬Ò»°ã²»Ê¹ÓÃÈÎºÎË÷Òý¡£Àý£º
-_____________________________________________________________
-SELECT * FROM FewUniques WITH(INDEX(0)) WHERE Status = 'Inactive'
-¡ª¡ªStatus I/O from table scan access (comment was Added), Scan count 1,logical reads 45, physical reads 0
-SELECT * FROM FewUniques WITH(Index(inFewUniquesStatus)) WHERE Status = 'Inactive'
-¡ª¡ªStatus I/O from table scan access (comment was Added), Scan count 1,logical reads 5018, physical reads 0
-
-C) Ð¡ÊýÄ¿µÄ²»Í¬Öµ£¬Ò»°ã²ÉÓÃ¾ÛÀàË÷Òý¡£
-_____________________________________________________________
-select * from FewUniques WITH(Index(0)) where Status = ¡®Inactive¡¯
---Status I/O from table scan access (comment was Added), Scan count 1,logical reads 16, physical reads 0
-create  clustered index icFewUniquesStatus on FewUniques(Status) GO
-select * from FewUniques WITH(Index(inFewUniquesStatus)) where Status = ¡®Inactive¡¯
---Status I/O from table scan access (comment was Added), Scan count 1,logical reads 3, physical reads 0
-D) ´óÊýÄ¿µÄ²»Í¬ÖµºÍ¸üÐÂË÷ÒýÁÐÊý¾Ý£¬µ±²»Í¬ÖµµÄÊýÄ¿Ôö¼Ó²¢´ïµ½±íÖÐÐÐµÄÊýÄ¿Ê±£¬Ò»°ãÑ¡ÔñÊ¹ÓÃ·Ç¾ÛÀàË÷Òý¡£
-E) ·µ»ØÐÐÊýÁ¿½ÏÉÙÒÔ¼°Æµ·±¸üÐÂµÄÁÐ£¬Ò»°ãÊ¹ÓÃ·Ç¾ÛÀàË÷Òý¡£
-F) ¸´ºÏË÷ÒýµÄÓÅÈ±µã
-G) ÔÚ´ó¶àÊýÇé¿öÏÂ¶¼Ê¹ÓÃÏàÍ¬µÄÌõ¼þÁÐ×éºÏÓ¦¿¼ÂÇ½¨Ò»¸´ºÏË÷Òý
-H) ÔÚ´ó¶àÊýÇé¿öÏÂ¶¼Ê¹ÓÃ²»Í¬µÄÌõ¼þÁÐ×éºÏÔò½¨¶à¸öµ¥Ò»Ë÷Òý»ò¶à¸öÐ¡µÄ¸´ºÏË÷Òý
-I) ²»µ¥¶À½øÐÐËÑË÷µÄÁÐ¾ö²»Ê×ÏÈÅÅÁÐÔÚË÷ÒýÖÐ
-4.4ÊÂÎñ·â×°Ê¹ÓÃ
-ÊÂÎñ·â×°µÄ³ÌÐò¶ÎºÍÖ´ÐÐÊ±¼ä¾¡Á¿¶Ì¡£
-4.5¶¯Ì¬¹â±êÊ¹ÓÃ
-¾¡Á¿ÉÙÓÃ¹â±êÑ­»·£¬ÔÚ´ó¶àÊýÌõ¼þÏÂ¿É×ª»»³ÉÁª½á²éÑ¯¡£
-4.6´æ´¢¹ý³ÌµÄÉèÖÃÑ¡ÏîÊ¹ÓÃ
-´æ´¢¹ý³Ì¿ªÍ·¾¡Á¿¼ÓÉÏSET NOCOUNT ON£¬¼õÉÙ²»±ØÒªµÄ¡°ÊÜ×÷ÓÃÐÐ¡±µÈÐÅÏ¢·µ»Øµ½¿Í»§¶Ë£¬²»È»ADO²éÑ¯»á³ö´í£¬Í¬Ê±¼õÉÙÍøÂçÁ÷Á¿£»
-ÔÚ·µ»Ø½á¹û¼¯µÄSQLÓï¾äÇ°Ê¹ÓÃSET ROWCOUNT 20000 £¬·ÀÖ¹³öÏÖÎÞÌõ¼þ²éÑ¯Ê±Ì«´óµÄÊý¾Ý¼¯·µ»Øµ½¿Í»§¶Ë¡£
-
+```
